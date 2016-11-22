@@ -19,6 +19,28 @@ public final class PersistenceHelper {
         em.close();
         emf.close();
     } 
+    public static <T> void update(T old, T updated) throws IllegalAccessException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myDB");
+        EntityManager em = emf.createEntityManager();
+        EntityManager em = getInstance();
+
+        em.getTransaction().begin();
+    }
+// public final class PersistenceHelper {
+//        Class<?> newObject = updated.getClass();
+//        Field[] fields = oldObject.getDeclaredFields();
+//
+//        for(Field field : fields ){
+//        for (Field field : fields) {
+//            field.setAccessible(true);
+//            field.set(c2, newObject);
+//        }
+//
+//        em.getTransaction().commit();
+//        em.close();
+//
+//        //em.close();
+//    }
 
     public static <T> void delete(T t) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("myDB");
